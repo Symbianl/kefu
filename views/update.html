@@ -1,0 +1,63 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+<script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	function updateapk(){
+		var boardId =$("#bid").val();
+		var url = $("#url").val();
+		alert(boardId);
+		alert(url);
+		$.post("/addupdateapk", {bid:boardId, url:url}, function(data){
+			alert(data);
+		})
+	};
+
+	function activate(){
+		var phone =$("#phone").val();
+		alert(phone);
+		$.post("/activatechargefee", {phone:phone}, function(data){
+			alert(data);
+		})
+	};
+
+	$(function(){
+		var originalList = $("option");
+		console.log("original list:" + originalList.length);
+		$("#search").keyup(function(){
+			 console.log($(this).val());
+                // if ($(this).val() === '') {
+                    $('#bid').html(originalList);
+                //     return;
+                // }
+                var boardList = $('option:contains(' + $(this).val() + ')');
+                $('#bid').empty();
+                $('#bid').html(boardList);
+
+		})
+	});
+</script>
+
+</head>
+<body>
+	<select id="bid" style="font-size: 60px;">
+		{{range $index, $elem := .Boards}} 
+		<option id="{{$elem.BoardId}}">{{$elem.BoardId}}</option>
+		{{end}}
+	</select><br/>
+	<input id="url" type="text" placeholder="输入升级的安装包地址" style="font-size: 60px">	
+	</input>
+	<br/>
+	<input id="search" type="text" placeholder="输入搜索的设备id" style="font-size: 60px">
+	<button id="add" onclick="updateapk()" style="font-size: 60px">确定</button>
+	<br/>
+	<br/>
+	<input id="phone" type="text" placeholder="输入店家绑定手机号" style="font-size: 60px">
+	<button id="activate" onclick="activate()" style="font-size: 60px">激活充值</button>
+
+</body>
+</html>

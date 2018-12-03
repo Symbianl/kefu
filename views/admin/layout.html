@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>游保科技客服后台管理{{.version}}</title>
+	<meta name="robots" content="all">
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/themes/admin/css/admin.css" rel="stylesheet" type="text/css"/>
+    <script src="/static/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/static/themes/admin/js/admin.js" type="text/javascript"></script>
+    <link href="/static/css/base.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+	<div class="container">
+	<h1>游保科技客服后台管理 <span>您好！{{.adminname}} <i>|</i> <a href="/admin/logout">退出登录</a> <i>|</i> <a href="/admin/account/profile">个人信息</a> <i>|</i> </span></h1>
+	</div>
+</div>
+
+<div class="container main">
+<div class="row">
+		<div class="span2">
+		<div class="well">
+		    <ul class="nav nav-list">
+
+				<li class="nav-header">功能列表</li>
+				<li><a href="/charge">玩家充值</a></li>
+                <li><a href="/getboards">激活充值</a></li>
+				<li class="nav-header">用户管理</li>
+				<li><a href="/admin/user/add">添加用户</a></li>
+				<li><a href="/admin/user/list">用户列表</a></li>
+			
+		    </ul>
+		</div>
+	</div>
+	<div class="span10">
+		{{.LayoutContent}}
+	</div>
+	<!-- end span10 -->
+	</div>
+	<!-- end row -->
+</div>
+<!-- end container -->
+
+</div>
+</body>
+</html>

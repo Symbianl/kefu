@@ -1,0 +1,89 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+<script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	function charge(){
+		var orderno = $("#order").val();
+		alert(orderno);
+		
+		$.post("/chargebalance", {no:orderno}, function(data){
+			alert(data);
+		})
+	};
+
+	function query(){
+		var orderno = $("#scanorder").val();
+		alert(orderno);
+
+		$.post("/scanorder", {no:orderno}, function(data){
+			alert(data);
+		})
+	};
+
+	function search(){
+		var orderno = $("#bossorder").val();
+		alert(orderno);
+
+		$.post("/findboss", {no:orderno}, function(data){
+			alert(data);
+		})
+	};
+
+	function register(){
+		var chanelid = $("#chanelid").val();
+		alert(chanelid);
+
+		$.post("/updatechanelid", {id:chanelid}, function(data){
+			alert(data);
+		})
+	};
+
+	function checkboardinfos() {
+		var boardid = $("#boardid").val();
+		alert(boardid);
+
+		$.post("/checkboardpayinfo", {id:boardid}, function(data){
+			alert(data);
+		})
+	};
+
+</script>
+</head>
+<body>
+	<h1>给玩家充值</h1>
+	<input id="order" type="text" placeholder="输入订单号后面几位（带下划线部分）" style="font-size: 60px">	
+	</input>
+	<br/>	
+	<button id="add" onclick="charge()" style="font-size: 60px">确定</button>
+	<br/>
+	<h1>查找店家联系方式</h1>
+	<input id="bossorder" type="text" placeholder="输入订单号后面几位（带下划线部分）" style="font-size: 60px">	
+	</input>
+	<br/>	
+	<button id="search" onclick="search()" style="font-size: 60px">确定</button>
+
+	<h1>反扫订单补查</h1>
+	<input id="scanorder" type="text" placeholder="输入订单号(全部内容)" style="font-size: 60px">	
+	</input>
+	<br/>	
+	<button id="query" onclick="query()" style="font-size: 60px">确定</button>
+
+	<h1>刷新新登记设备收款信息</h1>
+	<input id="chanelid" type="text" placeholder="输入新收款渠道id" style="font-size: 60px">	
+	</input>
+	<br/>	
+	<button id="query" onclick="register()" style="font-size: 60px">确定</button>
+
+	<h1>查看设备配置信息及收款渠道信息</h1>
+	<input id="boardid" type="text" placeholder="输入设备id" style="font-size: 60px">	
+	</input>
+	<br/>	
+	<button id="query" onclick="checkboardinfos()" style="font-size: 60px">确定</button>
+
+</body>
+</html>
